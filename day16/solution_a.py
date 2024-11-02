@@ -34,8 +34,8 @@ def energize_array(start_pos, start_dir):
     energized_array = np.zeros_like(mirror_array, dtype=np.int32)
     while next_stack:
         (pos, dir) = next_stack.popleft()
-        energized_array[*pos] = 1
-        next_dir_list = mirror_map[mirror_array[*pos]](dir)
+        energized_array[pos[0], pos[1]] = 1
+        next_dir_list = mirror_map[mirror_array[pos[0], pos[1]]](dir)
         for next_dir in next_dir_list:
             next_pos = (pos[0] + next_dir[0], pos[1] + next_dir[1])
             if bounds_check(next_pos, mirror_array.shape, next_dir, done):
